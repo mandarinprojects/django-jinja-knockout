@@ -46,7 +46,7 @@ class UrlsExtension(Extension):
         super().__init__(environment)
         environment.globals['url'] = self._url_reverse
 
-    @jinja2.contextfunction
+    @jinja2.pass_context
     def _url_reverse(self, context, name, *args, **kwargs):
         return tpl.url(name, request=context.get('request'), *args, **kwargs)
 
